@@ -1,0 +1,58 @@
+FUNCTION AND PROCEDURE
+
+FUNCTION --
+A function is invoked within an expression and returns a single value directly to the caller to be used in the expression. 
+That is, a function is used in expressions the same way as a constant, a built-in function, or a reference to a table column.
+It can be called within an expression.
+We cannot invoke a function with a CALL statement.
+Functions have only input parameters
+Functions return a value, so there must be a RETURNS clause in a function definition to indicate the data type of the return value.
+Also, there must be at least one RETURN statement within the function body to return a value to the caller.
+PROCEDURE--
+A procedure does not return a value. Instead, it is invoked with a CALL statement to perform an operation such as modifying
+a table or processing retrieved records.
+.we can say as procedure is called explicitly.
+ We cannot invoke a procedure in an expression.
+ Here no return statement is needed.
+ 
+ -------------------
+ VIEW AND PROCEDURE
+ -------------------
+ VIEW--A view is a database object that has no values. Its contents are based on the base table. 
+ It contains rows and columns similar to the real table.
+ In MySQL, the View is a virtual table created by a query by joining one or more tables.
+ It is operated similarly to the base table but does not contain any data of its own.
+ The View and table have one main difference that the views are definitions built on top of other tables (or views). 
+ 
+ If any changes occur in the underlying table, the same changes reflected in the View also.
+ 
+ -------------------
+ PROCEDURE
+ -------------------
+  PROCEDURE--A procedure (often called a stored procedure) is a collection of pre-compiled SQL statements 
+  stored inside the database. 
+  It is a subroutine or a subprogram in the regular computing language.
+  A procedure always contains a name, parameter lists, and SQL statements.
+  Stored Procedure increases the performance of the applications.
+  Once stored procedures are created, they are compiled and stored in the database.
+Stored procedure reduces the traffic between application and database server.
+Because the application has to send only the stored procedure's name and parameters instead of sending multiple SQL statements.
+Stored procedures are reusable and transparent to any applications.
+A procedure is always secure. The database administrator can grant permissions to applications
+that access stored procedures in the database without giving any permissions on the database tables.
+
+---------------------------------CREATE PROCEDURE EXAMPLE WHIVH CAN TAKE INPUT PARAMETER--------------------
+DELIMITER // 
+CREATE PROCEDURE emp1 (IN deptno1 INT)  
+BEGIN  
+    SELECT * FROM emp where deptno= deptno1;  
+    SELECT COUNT(*) AS no_of_emp_deptwise FROM emp;    
+END // 
+DELIMITER ;  
+
+
+
+
+
+
+ 
