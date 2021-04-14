@@ -51,7 +51,25 @@ END //
 DELIMITER ;  
 
 
-
+-------------------
+TRIGGER
+-------------------
+Triggers are just like stored procedure which are called automatically in backend.
+there are 6 types of trigger :
+1.before insert
+2.after insert
+3.before delete
+4.after delete
+5.before update 
+6.after update.
+where before and after are considered as trigger activation time and update ,insert and delete are considered as trigger event.
+Syntax to create trigger-
+create trigger triggername
+after/before insert/update/delete  for each row
+begin
+variable declaration
+triggercode
+end;
 
 
 
