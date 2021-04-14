@@ -43,10 +43,10 @@ that access stored procedures in the database without giving any permissions on 
 
 ---------------------------------CREATE PROCEDURE EXAMPLE WHIVH CAN TAKE INPUT PARAMETER--------------------
 DELIMITER // 
-CREATE PROCEDURE emp1 (IN deptno1 INT)  
+CREATE PROCEDURE emp1 (INOUT deptno1 INT)  
 BEGIN  
     SELECT * FROM emp where deptno= deptno1;  
-    SELECT COUNT(*) AS no_of_emp_deptwise FROM emp;    
+    SELECT COUNT(*) AS no_of_emp_deptwise FROM emp group by deptno;    
 END // 
 DELIMITER ;  
 
