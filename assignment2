@@ -72,5 +72,29 @@ triggercode
 end;
 
 
-
+ 3..ITERATE statement to execute the loop again.
  
+ DELIMITER //
+
+CREATE FUNCTION CalSal( sal INT )
+RETURNS INT
+
+BEGIN
+
+   DECLARE income INT;
+
+   SET income = 0;
+
+   label1: LOOP
+     SET income = income + sal;
+     IF income < 2500 THEN
+       ITERATE label1;
+     END IF;
+     LEAVE label1;
+   END LOOP label1;
+
+   RETURN income;
+
+END; //
+
+DELIMITER ;
