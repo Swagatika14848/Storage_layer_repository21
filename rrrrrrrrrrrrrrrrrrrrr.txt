@@ -1,0 +1,131 @@
+1)show all info of emp.
+select * from emp;
+..ans) db.emp.find().pretty()
+2)display unique jobs of emp
+select distinct(job) from emp;
+ans) db.emp.distinct("JOB")
+3)sal by asc order
+select * from emp order by sal asc;
+ans)db.emp.find().sort({"SAL":1})
+4)list of emp order by deptno asc and job desc
+select ename,sal,job,deptno from emp order by deptno asc,job desc;
+ans)db.emp.find().sort({"DEPTNO":1,"JOB":-1})
+5)Display all job groups by desc order
+select distinct(job) from emp order by job desc;
+ans)db.emp.find({},{"distinct("JOB")":1}).sort({"job":-1})
+6)display all details of mgr
+select * from emp where job='MANAGER';
+ans)db.emp.find({"JOB":"MANAGER"})
+7)display emp who are joined before 1981-1-1
+select * from emp where hiredate<('1981-1-1');
+db.emp.find({"HIREDATE":{"$lt":('1981-1-1')}})
+8)list the empno,ename,sal,dailysalof all emps in the asc order of annsal
+select empno,ename,sal,sal/30 as dailysal,sal*12 as annsal from emp order by annsal asc;
+db.emp.aggregate([$project:{"_id":0,"EMPNO":1,"ENAME":1,"SAL":1,"DAILYSAL":{$divide:["$SAL",30]},"ANNSAL":{$multiply:["$SAL",12]}}},{$sort:{ANNSAL:1}}]);
+9)Display ename,hiredate,empno,job,exp off all mgr
+select empno ,ename sal,(datediff(NOW(),hiredate))/365 exp from emp where empno in(select mgr from emp);
+db.emp.find({"empno":{"$in":[select mgr from emp]}},
+{
+"empno":1,
+"ename":1,
+"job":1,
+"hiredate":1,
+"timestampdiff("year":1,
+"hiredate":1,
+"curdate())exp":1})
+10.list of emp eho are working under 7369
+select empno,ename,sal ,timestampdiff(year,currdate(),hiredate) as exp from emp where mgr=7369;
+db.emp.find({"mgr" :7369},{"empno":1,"ename"1,"sal":1,"timestampdiff("year":1,
+"hiredate":1,
+"curdate())exp":1})
+11.Display all details of emp whose comm is more than their sal
+select * from emp where comm>sal;
+db.emp.find({"$where":"this.comm>this.sal"})
+13)list of all emp along with their exp and daily sal is more than 100
+select * from emp where (sal/30)>100;
+db.emp.find({"sal/30}:{"$gt":100}})
+14)list of emp who are are either clerk or analyst in desc order
+select * from emp where job="CLERK" or job="ANALYST" order by job desc;
+db.emp.find({"$or":[{
+"$where ":"this.job == this."clerk"},{"$where ":"this.job==this."ANALYST"}]}).sort({"job":-1})
+15)list of emp who joined on 1-may-81,3-dec-81,17-dec-81,19-jan-80 in asc order of seniority
+select  * from emp where hiredate in("01-may-81","17-dec-81","19-jan-80"]}}).sort({"hiredate":1})
+16)list of emp who are working for the deptno 10 or 20
+select * from emp where deptno=10 or deptno =20;
+db.emp.find({"$or":[{
+"deptno":10},{"depto":20}]}
+17)list of emp who are joined in the year 81
+select * from emp where hiredate like "%81%";
+db.emp.find({"$like":"%81"})
+19)list the emp whose annualsal ranging from 22000 and 45000
+select * from emp where 12*sal between 22000 and 45000;
+20)
+list ename who has 5 character in their name 
+select ename from emp where length(ename)=5;
+db.emp.find({"length(ename)":5},{"ename":1});
+21)
+list the enames those are starting with s and ename must be 5 letter.
+select * from emp where ename like "s%" and length(ename)=5;
+db.emp.find({
+"$and":[{
+"$where ":"this.ename==this."s%"},{"length(ename)":5}]},{"ename":1});
+22)list of emp those are having four character and third character must be r;
+select * from emp where length(ename)=4 and ename like"--r%";
+db.emp.find({"$and ":[{
+"length(ename)":4},{"$where ":"this.ename==this."__r%""}]})
+23
+list the five character name starting with"sa" and ename like ha
+select * from emp where length(ename)=5 and ename between "sa%" and "%ha";
+db.emp.find({"$and":[{
+"length(ename)":5},{"$where ":"this.ename ==this.'s%ha'"}]});
+24
+list emp who joined in january
+select * from emp where to_char(hiredate,'mon')="jan;
+db.emp.find({"$where ":"this.to_char(hiredate,'mon') == this.'jan'"});
+27
+list the emps whose name having a character set 'll'together 
+select * from emp where ename like"%ll%";
+db.emp.find({"$where":"this.ename ==this.'%ll%'"})
+29
+list emp who doesnt belong to deptno 20
+select * from emp where deptno!=20;
+db.emp.find({"deptno":{"$ne":20}})
+30
+list all emp except president  and manager in asc order of sal
+select * from emp where job not in ("PRESIDENT","MANAGER") order by sal asc;
+db.emp.find({"job":{"$nin":["PRESIDENT","MANAGER']}}).sort({"sal":1})
+
+31
+list the emp whose empno not satrting with digit 78
+select * from emp where empno not like "78%";
+db.emp.find({"empno":{"$ne":'78%'});
+33
+list of all emp who are working under'mgr'
+select e.ename || 'works for ' || m.ename from emp e, emp m where e.mgr = m.empno;
+db.emp e.,emp m.find({"$where":"this.e.mgr == this.m.empno"},{"e.ename || 'worksfor'|| m.ename":1})
+34
+list the emps who joined in any year but not belongs to the month of march
+select * from emp  where to_char(hiredate,'mon') not in('mar');
+db.emp.find({"to_char(hiredate,'mon') not ":{"$in ":{'mar'}})
+35.list all clerks of deptno 20
+select * from emp where job='CLERK' and deptno=20;
+db.emp.find({
+"$and":[{"$where ": "this.job==this.'CLERK'"},{"deptno":20}]})
+36.list the emps of deptno 30 or 10 joined in the year 1981
+select * from emp where to_char(hiredate,'YYYY') in ('1981') and (deptno=30 or deptno=10);
+db.emp.find({
+"$and":[{"to_char(hiredate,'yyyy')":{"$in":[1981]}},{
+"$or":[{"$or":[{"deptno":30},{"deptno":10}]}]})
+
+37. Display the details of Smith
+select * from emp where ename ='SMITH';
+db.emp.find({"ename":'SMITH'})
+
+38.Display the location of SMITH
+select loc from emp e,dept d where e.ename='SMITH' and  e.deptno=d.deptno;
+db.emp e ,dept d.find({"$and":[{
+"$where ":"this.e.ename== this.'SMITH'"},{"$where ":"this.e.deptno == this.d.deptno"}]},{"loc":1})
+
+
+
+ 
