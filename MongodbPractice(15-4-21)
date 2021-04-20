@@ -1,0 +1,2496 @@
+https://notepad.pw/05ud20e2
+MongoDB shell version v4.4.4
+connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("81aec63f-0d20-402f-92d0-c9f954693759") }
+MongoDB server version: 4.4.4
+Welcome to the MongoDB shell.
+For interactive help, type "help".
+For more comprehensive documentation, see
+        https://docs.mongodb.com/
+Questions? Try the MongoDB Developer Community Forums
+        https://community.mongodb.com
+---
+The server generated these startup warnings when booting:
+        2021-04-11T15:11:09.110+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+---
+---
+        Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+        metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+        The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+        and anyone you share the URL with. MongoDB may use this information to make product
+        improvements and to suggest MongoDB products and deployment options to you.
+
+        To enable free monitoring, run the following command: db.enableFreeMonitoring()
+        To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+> show db
+uncaught exception: Error: don't know how to show [db] :
+shellHelper.show@src/mongo/shell/utils.js:1191:11
+shellHelper@src/mongo/shell/utils.js:819:15
+@(shellhelp2):1:1
+> show database
+uncaught exception: Error: don't know how to show [database] :
+shellHelper.show@src/mongo/shell/utils.js:1191:11
+shellHelper@src/mongo/shell/utils.js:819:15
+@(shellhelp2):1:1
+> db help()
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:3
+> use training21
+switched to db training21
+> db help()
+uncaught exception: SyntaxError: unexpected token: identifier :
+@(shell):1:3
+> db.help()
+DB methods:
+        db.adminCommand(nameOrDocument) - switches to 'admin' db, and runs command [just calls db.runCommand(...)]
+        db.aggregate([pipeline], {options}) - performs a collectionless aggregation on this database; returns a cursor
+        db.auth(username, password)
+        db.cloneDatabase(fromhost) - will only function with MongoDB 4.0 and below
+        db.commandHelp(name) returns the help for the command
+        db.copyDatabase(fromdb, todb, fromhost) - will only function with MongoDB 4.0 and below
+        db.createCollection(name, {size: ..., capped: ..., max: ...})
+        db.createUser(userDocument)
+        db.createView(name, viewOn, [{$operator: {...}}, ...], {viewOptions})
+        db.currentOp() displays currently executing operations in the db
+        db.dropDatabase(writeConcern)
+        db.dropUser(username)
+        db.eval() - deprecated
+        db.fsyncLock() flush data to disk and lock server for backups
+        db.fsyncUnlock() unlocks server following a db.fsyncLock()
+        db.getCollection(cname) same as db['cname'] or db.cname
+        db.getCollectionInfos([filter]) - returns a list that contains the names and options of the db's collections
+        db.getCollectionNames()
+        db.getLastError() - just returns the err msg string
+        db.getLastErrorObj() - return full status object
+        db.getLogComponents()
+        db.getMongo() get the server connection object
+        db.getMongo().setSecondaryOk() allow queries on a replication secondary server
+        db.getName()
+        db.getProfilingLevel() - deprecated
+        db.getProfilingStatus() - returns if profiling is on and slow threshold
+        db.getReplicationInfo()
+        db.getSiblingDB(name) get the db at the same server as this one
+        db.getWriteConcern() - returns the write concern used for any operations on this db, inherited from server object if set
+        db.hostInfo() get details about the server's host
+        db.isMaster() check replica primary status
+        db.hello() check replica primary status
+        db.killOp(opid) kills the current operation in the db
+        db.listCommands() lists all the db commands
+        db.loadServerScripts() loads all the scripts in db.system.js
+        db.logout()
+        db.printCollectionStats()
+        db.printReplicationInfo()
+        db.printShardingStatus()
+        db.printSecondaryReplicationInfo()
+        db.resetError()
+        db.runCommand(cmdObj) run a database command.  if cmdObj is a string, turns it into {cmdObj: 1}
+        db.serverStatus()
+        db.setLogLevel(level,<component>)
+        db.setProfilingLevel(level,slowms) 0=off 1=slow 2=all
+        db.setVerboseShell(flag) display extra information in shell output
+        db.setWriteConcern(<write concern doc>) - sets the write concern for writes to the db
+        db.shutdownServer()
+        db.stats()
+        db.unsetWriteConcern(<write concern doc>) - unsets the write concern for writes to the db
+        db.version() current version of the server
+        db.watch() - opens a change stream cursor for a database to report on all  changes to its non-system collections.
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+> show collection
+uncaught exception: Error: don't know how to show [collection] :
+shellHelper.show@src/mongo/shell/utils.js:1191:11
+shellHelper@src/mongo/shell/utils.js:819:15
+@(shellhelp2):1:1
+> show collections
+> db.Mypractice.insert({idno:01,name:"mastek"})
+WriteResult({ "nInserted" : 1 })
+> db.Mypractice.save({idno:2,name:"mahape"})
+WriteResult({ "nInserted" : 1 })
+> db.Mypractice.find().pretty
+function() {
+    this._prettyShell = true;
+    return this;
+}
+> db.Mypractice.find().pretty()
+{
+        "_id" : ObjectId("6077feb583c9f5fd268d9b8a"),
+        "idno" : 1,
+        "name" : "mastek"
+}
+{
+        "_id" : ObjectId("6077ff4183c9f5fd268d9b8b"),
+        "idno" : 2,
+        "name" : "mahape"
+}
+> db.Mypractice.findOne().pretty()
+uncaught exception: TypeError: db.Mypractice.findOne(...).pretty is not a function :
+@(shell):1:1
+> db.Mypractice.findone().pretty()
+uncaught exception: TypeError: db.Mypractice.findone is not a function :
+@(shell):1:1
+> db.Mypractice.findOne({idno:1}).pretty()
+uncaught exception: TypeError: db.Mypractice.findOne(...).pretty is not a function :
+@(shell):1:1
+> db.Mypractice.findOne({idno:1})
+{
+        "_id" : ObjectId("6077feb583c9f5fd268d9b8a"),
+        "idno" : 1,
+        "name" : "mastek"
+}
+> db.Mypractice.findOne({idno:1}).pretty()
+uncaught exception: TypeError: db.Mypractice.findOne(...).pretty is not a function :
+@(shell):1:1
+> db.Mypractice.find()
+{ "_id" : ObjectId("6077feb583c9f5fd268d9b8a"), "idno" : 1, "name" : "mastek" }
+{ "_id" : ObjectId("6077ff4183c9f5fd268d9b8b"), "idno" : 2, "name" : "mahape" }
+> db.emp.insert({  EMPNO:7369,   ENAME:'SMITH',   JOB:'CLERK', MGR :7902, HIREDATE :'12/17/1980', SAL:  800, COMM :null, DEPTNO :20});
+WriteResult({ "nInserted" : 1 })
+> db.emp.insert({  EMPNO:7499, ENAME:'ALLEN', JOB:'SALESMAN', MGR :7698, HIREDATE :'02/20/1981', SAL: 1600, COMM : 300, DEPTNO:30});
+WriteResult({ "nInserted" : 1 })
+> db.emp.insert({  EMPNO:7521, ENAME:'WARD' , JOB:'SALESMAN', MGR :7698, HIREDATE :'02/22/1981', SAL: 1250, COMM : 500, DEPTNO :30});
+WriteResult({ "nInserted" : 1 })
+> db.emp.insert({  EMPNO:7566, ENAME:'JONES', JOB:'MANAGER', MGR :7839, HIREDATE :'04/02/1981', SAL: 2975, COMM :null, DEPTNO :20});
+WriteResult({ "nInserted" : 1 })
+> db.emp.insertMany([{  EMPNO:7654, ENAME:'MARTIN',  JOB:'SALESMAN', MGR :7698, HIREDATE :'09/28/1981',NO :30},{ EMPNO:769db.emp.insertMany([{  EMPNO:7654, ENAME:'MARTIN',  JOB:'SALESMAN', MGR :7698, HIREDATE :'09/28/1981',NO :30},{ EMPNO:769db.emp.insertMany([{  EMPNO:7654, ENAME:'MARTIN',  JOB:'SALESMAN', MGR :7698, HIREDATE :'09/28/1981',NO :30},{ EMPNO:769db.emp.insertMany([{  EMPNO:7654, ENAME:'MARTIN',  JOB:'SALESMAN', MGR :7698, HIREDATE :'09/28/1981',NO :30},{ EMPNO:769db.emp.insertMany([{  EMPNO:7654, ENAME:'MARTIN',  JOB:'SALESMAN', MGR :7698, HIREDATE :'09/28/1981',NO :30},{ EMPNO:769db.emp.insertMany([{  EMPNO:7654, ENAME:'MARTIN',  JOB:'SALESMAN', MGR :7698, HIREDATE :'09/28/1981',NO :30},{ EMPNO:769db.emp.insertMany([{  EMPNO:7654, ENAME:'MARTIN',  JOB:'SALESMAN', MGR :7698, HIREDATE :'09/28/1981',NO :30},{ EMPNO:769db.emp.insertMany([{  EMPNO:7654, ENAME:'MARTIN',  JOB:'SALESMAN', MGR :7698, HIREDATE :'09/28/1981',NO :30},{ EMPNO:769db.emp.insertMany([{  EMPNO:7654, ENAME:'MARTIN',  JOB:'SALESMAN', MGR :7698, HIREDATE :'09/28/1981',NO :30},{ EMPNO:769db.emp.insertMany([{  EMPNO:7654, ENAME:'MARTIN',  JOB:'SALESMAN', MGR :7698, HIREDATE :'09/28/1981',NO :30},{ EMPNO:769db.emp.insertMany([{  EMPNO:7654, ENAME:'MARTIN',  JOB:'SALESMAN', MGR :7698, HIREDATE :'09/28/1981',NO :30},{ EMPNO:769db.emp.insertMany([{  EMPNO:7654, ENAME:'MARTIN',  JOB:'SALESMAN', MGR :7698, HIREDATE :'09/28/1981',NO :30},{ EMPNO:769db.emp.insertMany([{  EMPNO:7654, ENAME:'MARTIN',  JOB:'SALESMAN', MGR :7698, HIREDATE :'09/28/1981',NO :30},{ EMPNO:769db.emp.insertMany([{  EMPNO:7654, ENAME:'MARTIN',  JOB:'SALESMAN', MGR :7698, HIREDATE :'09/28/1981',NO :30},{ EMPNO:769db.emp.insertMany([{  EMPNO:7654, ENAME:'MARTIN',  JOB:'SALESMAN', MGR :7698, HIREDATE :'09/28/1981',NO :30},{ EMPNO:769db.emp.insertMany([{  EMPNO:7654, ENAME:'MARTIN',  JOB:'SALESMAN', MGR :7698, HIREDATE :'09/28/1981',NO :30},{ EMPNO:769db.emp.insertMany([{  EMPNO:7654, ENAME:'MARTIN',  JOB:'SALESMAN', MGR :7698, HIREDATE :'09/28/1981',NO :30},{ EMPNO:769db.emp.insertMany([{  EMPNO:7654, ENAME:'MARTIN',  JOB:'SALESMAN', MGR :7698, HIREDATE :'09/28/1981',NO :30},{ EMPNO:769db.emp.insertMany([{  EMPNO:7654, ENAME:'MARTIN',  JOB:'SALESMAN', MGR :7698, HIREDATE :'09/28/1981',NO :30},{ EMPNO:769db.emp.insertMany([{  EMPNO:7654, ENAME:'MARTIN',  JOB:'SALESMAN', MGR :7698, HIREDATE :'09/28/1981',NO :30},{ EMPNO:7698, ENAME:'BLAKE', JOB:'MANAG
+uncaught exception: SyntaxError: '' literal not terminated before end of script :
+@(shell):1:148
+>
+> db.emp.insert({  EMPNO:7654, ENAME:'MARTIN',  JOB:'SALESMAN', MGR :7698, HIREDATE :'09/28/1981',NO :30});
+WriteResult({ "nInserted" : 1 })
+>
+> db.emp.insert({  EMPNO:7698, ENAME:'BLAKE', JOB:'MANAGER', MGR :7839, HIREDATE :'05/01/1981', SAL: 2850, COMM :null, DEPTNO :30});
+WriteResult({ "nInserted" : 1 })
+>
+> db.emp.insert({  EMPNO:7782, ENAME:'CLARK', JOB:'MANAGER', MGR :7839, HIREDATE :'06/09/1981', SAL: 2450, COMM :null, DEPTNO :10});
+WriteResult({ "nInserted" : 1 })
+>
+> db.emp.insert({  EMPNO:7788, ENAME:'SCOTT', JOB:'ANALYST', MGR :7566, HIREDATE :'12/09/1982', SAL: 3000, COMM :null, DEPTNO :20});
+WriteResult({ "nInserted" : 1 })
+>
+> db.emp.insert({  EMPNO:7839, ENAME:'KING', JOB:'PRESIDENT' , MGR :null, HIREDATE :'11/17/1981', SAL: 5000, COMM :null, DEPTNO :null});
+WriteResult({ "nInserted" : 1 })
+>
+> db.emp.insert({  EMPNO:7844, ENAME:'TURNER' , JOB:'SALESMAN', MGR :7698, HIREDATE :'09/08/1981', SAL: 1500, COMM :   0, DEPTNO :30});
+WriteResult({ "nInserted" : 1 })
+>
+> db.emp.insert({  EMPNO:7876, ENAME:'ADAMS', JOB:'CLERK', MGR :7788, HIREDATE :'01/12/2003', SAL: 1100, COMM :null, DEPTNO :20});
+WriteResult({ "nInserted" : 1 })
+>
+> db.emp.insert({  EMPNO:7900, ENAME:'JAMES', JOB:'CLERK', MGR :7698, HIREDATE :'12/03/1981', SAL:  950, COMM :null, DEPTNO :30});
+WriteResult({ "nInserted" : 1 })
+>
+> db.emp.insert({  EMPNO:7901, ENAME:'RAHUL_DRAVID' , JOB:'MANAGER'   , MGR :7839, HIREDATE :'01/23/2012', SAL: 3000, COMM :null, DEPTNO :10});
+WriteResult({ "nInserted" : 1 })
+>
+> db.emp.insert({  EMPNO:7902, ENAME:'FORD' , JOB:'ANALYST', MGR :7566, HIREDATE :'12/03/1981', SAL: 3000, COMM :null, DEPTNO :20});
+WriteResult({ "nInserted" : 1 })
+>
+> db.emp.insert({  EMPNO:7934, ENAME:'MILLER' , JOB:'CLERK', MGR :7782, HIREDATE :'01/23/2002', SAL: 1300, COMM :null, DEPTNO :10});
+WriteResult({ "nInserted" : 1 })
+>
+> db.emp.insert({  EMPNO:7999, ENAME:'RAHUL_DRAVID', JOB:'db.emp.insert({  EMPNO:7369,   ENAME:'SMITH',   JOB:'CLERK', MGR :7902, HIREDATE :'12/17/1980', SAL:  800, COMM :null, DEPTNO :20});
+uncaught exception: SyntaxError: missing } after property list :
+@(shell):1:94
+>
+> db.emp.insert({  EMPNO:7499, ENAME:'ALLEN', JOB:'SALESMAN', MGR :7698, HIREDATE :'02/20/1981', SAL: 1600, COMM : 300, DEPTNO:30});
+WriteResult({ "nInserted" : 1 })
+> db.emp.insert({  EMPNO:7521, ENAME:'WARD' , JOB:'SALESMAN', MGR :7698, HIREDATE :'02/22/1981', SAL: 1250, COMM : 500, DEPTNO :30});
+Wrdb.emp.insert({  EMPNO:7566, ENAME:'JONES', JOB:'MANAGER', MGR :7839, HIREDATE :'04/02/1981', SAL: 2975, COMM :null, DEPTNO :20});
+WriteResult({ "nInserted" : 1 })NAME:'JONES', JOB:'MANAGER', MGR :7839, HIREDATE :'04/02/1981', SAL: 2975, COMM :null, DEPTNO :20});
+> db.emp.insert({EMPNO:7369,ENAME:'SMITH',JOB:'CLERK',MGR:7902,HIREDATE:'12/17/1980',SAL:800,COMM:NULL,DEPTNO:20})
+uncaught exception: ReferenceError: NULL is not defined :
+@(shell):1:92
+> db.emp.insert({EMPNO:7369,ENAME:'SMITH',JOB:'CLERK',MGR:7902,HIREDATE:'12/17/1980',SAL:800,COMM: null,DEPTNO:20})
+WriteResult({ "nInserted" : 1 })
+>
+> db.emp.insert({  EMPNO:7654, ENAME:'MARTIN',  JOB:'SALESMAN', MGR :7698, HIREDATE :'09/28/1981',NO :30});
+WriteResult({ "nInserted" : 1 })
+>
+> db.emp.insert({  EMPNO:7698, ENAME:'BLAKE', JOB:'MANAGER', MGR :7839, HIREDATE :'05/01/1981', SAL: 2850, COMM :null, DEPTNO :30});
+WriteResult({ "nInserted" : 1 })
+>
+> db.emp.insert({  EMPNO:7782, ENAME:'CLARK', JOB:'MANAGER', MGR :7839, HIREDATE :'06/09/1981', SAL: 2450, COMM :null, DEPTNO :10});
+WriteResult({ "nInserted" : 1 })
+>
+> db.emp.insert({  EMPNO:7788, ENAME:'SCOTT', JOB:'ANALYST', MGR :7566, HIREDATE :'12/09/1982', SAL: 3000, COMM :null, DEPTNO :20});
+WriteResult({ "nInserted" : 1 })
+>
+> db.emp.insert({  EMPNO:7839, ENAME:'KING', JOB:'PRESIDENT' , MGR :null, HIREDATE :'11/17/1981', SAL: 5000, COMM :null, DEPTNO :null});
+WriteResult({ "nInserted" : 1 })
+>
+> db.emp.insert({  EMPNO:7844, ENAME:'TURNER' , JOB:'SALESMAN', MGR :7698, HIREDATE :'09/08/1981', SAL: 1500, COMM :   0, DEPTNO :30});
+WriteResult({ "nInserted" : 1 })
+>
+> db.emp.insert({  EMPNO:7876, ENAME:'ADAMS', JOB:'CLERK', MGR :7788, HIREDATE :'01/12/2003', SAL: 1100, COMM :null, DEPTNO :20});
+WriteResult({ "nInserted" : 1 })
+>
+> db.emp.insert({  EMPNO:7900, ENAME:'JAMES', JOB:'CLERK', MGR :7698, HIREDATE :'12/03/1981', SAL:  950, COMM :null, DEPTNO :30});
+WriteResult({ "nInserted" : 1 })
+>
+> db.emp.insert({  EMPNO:7901, ENAME:'RAHUL_DRAVID' , JOB:'MANAGER'   , MGR :7839, HIREDATE :'01/23/2012', SAL: 3000, COMM :null, DEPTNO :10});
+WriteResult({ "nInserted" : 1 })
+> db.emp.insert({  EMPNO:7902, ENAME:'FORD' , JOB:'ANALYST', MGR :7566, HIREDATE :'12/03/1981', SAL: 3000, COMM :null, DEPTNO :20});
+WriteResult({ "nInserted" : 1 })
+>
+> db.emp.insert({  EMPNO:7934, ENAME:'MILLER' , JOB:'CLERK', MGR :7782, HIREDATE :'01/23/2002', SAL: 1300, COMM :null, DEPTNO :10});
+WriteResult({ "nInserted" : 1 })
+>
+> db.emp.insert({  EMPNO:7999, ENAME:'RAMANAGER', MGR :7839, HIREDATE :'01/01/2011', SAL: 4000, COMM :null, DEPTNO :10});
+WriteResult({ "nInserted" : 1 })
+> db.emp.find().pretty()
+{
+        "_id" : ObjectId("6078017583c9f5fd268d9b8c"),
+        "EMPNO" : 7369,
+        "ENAME" : "SMITH",
+        "JOB" : "CLERK",
+        "MGR" : 7902,
+        "HIREDATE" : "12/17/1980",
+        "SAL" : 800,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078017583c9f5fd268d9b8d"),
+        "EMPNO" : 7499,
+        "ENAME" : "ALLEN",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "02/20/1981",
+        "SAL" : 1600,
+        "COMM" : 300,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078017583c9f5fd268d9b8e"),
+        "EMPNO" : 7521,
+        "ENAME" : "WARD",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "02/22/1981",
+        "SAL" : 1250,
+        "COMM" : 500,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078018183c9f5fd268d9b8f"),
+        "EMPNO" : 7566,
+        "ENAME" : "JONES",
+        "JOB" : "MANAGER",
+        "MGR" : 7839,
+        "HIREDATE" : "04/02/1981",
+        "SAL" : 2975,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b90"),
+        "EMPNO" : 7654,
+        "ENAME" : "MARTIN",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "09/28/1981",
+        "NO" : 30
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b91"),
+        "EMPNO" : 7698,
+        "ENAME" : "BLAKE",
+        "JOB" : "MANAGER",
+        "MGR" : 7839,
+        "HIREDATE" : "05/01/1981",
+        "SAL" : 2850,
+        "COMM" : null,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b92"),
+        "EMPNO" : 7782,
+        "ENAME" : "CLARK",
+        "JOB" : "MANAGER",
+        "MGR" : 7839,
+        "HIREDATE" : "06/09/1981",
+        "SAL" : 2450,
+        "COMM" : null,
+        "DEPTNO" : 10
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b93"),
+        "EMPNO" : 7788,
+        "ENAME" : "SCOTT",
+        "JOB" : "ANALYST",
+        "MGR" : 7566,
+        "HIREDATE" : "12/09/1982",
+        "SAL" : 3000,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b94"),
+        "EMPNO" : 7839,
+        "ENAME" : "KING",
+        "JOB" : "PRESIDENT",
+        "MGR" : null,
+        "HIREDATE" : "11/17/1981",
+        "SAL" : 5000,
+        "COMM" : null,
+        "DEPTNO" : null
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b95"),
+        "EMPNO" : 7844,
+        "ENAME" : "TURNER",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "09/08/1981",
+        "SAL" : 1500,
+        "COMM" : 0,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b96"),
+        "EMPNO" : 7876,
+        "ENAME" : "ADAMS",
+        "JOB" : "CLERK",
+        "MGR" : 7788,
+        "HIREDATE" : "01/12/2003",
+        "SAL" : 1100,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b97"),
+        "EMPNO" : 7900,
+        "ENAME" : "JAMES",
+        "JOB" : "CLERK",
+        "MGR" : 7698,
+        "HIREDATE" : "12/03/1981",
+        "SAL" : 950,
+        "COMM" : null,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b98"),
+        "EMPNO" : 7901,
+        "ENAME" : "RAHUL_DRAVID",
+        "JOB" : "MANAGER",
+        "MGR" : 7839,
+        "HIREDATE" : "01/23/2012",
+        "SAL" : 3000,
+        "COMM" : null,
+        "DEPTNO" : 10
+}
+{
+        "_id" : ObjectId("6078029c83c9f5fd268d9b99"),
+        "EMPNO" : 7902,
+        "ENAME" : "FORD",
+        "JOB" : "ANALYST",
+        "MGR" : 7566,
+        "HIREDATE" : "12/03/1981",
+        "SAL" : 3000,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078029c83c9f5fd268d9b9a"),
+        "EMPNO" : 7934,
+        "ENAME" : "MILLER",
+        "JOB" : "CLERK",
+        "MGR" : 7782,
+        "HIREDATE" : "01/23/2002",
+        "SAL" : 1300,
+        "COMM" : null,
+        "DEPTNO" : 10
+}
+{
+        "_id" : ObjectId("6078029c83c9f5fd268d9b9b"),
+        "EMPNO" : 7499,
+        "ENAME" : "ALLEN",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "02/20/1981",
+        "SAL" : 1600,
+        "COMM" : 300,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078029c83c9f5fd268d9b9c"),
+        "EMPNO" : 7521,
+        "ENAME" : "WARD",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "02/22/1981",
+        "SAL" : 1250,
+        "COMM" : 500,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("607802cc83c9f5fd268d9b9d"),
+        "EMPNO" : 7566,
+        "ENAME" : "JONES",
+        "JOB" : "MANAGER",
+        "MGR" : 7839,
+        "HIREDATE" : "04/02/1981",
+        "SAL" : 2975,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("607803ce83c9f5fd268d9b9e"),
+        "EMPNO" : 7369,
+        "ENAME" : "SMITH",
+        "JOB" : "CLERK",
+        "MGR" : 7902,
+        "HIREDATE" : "12/17/1980",
+        "SAL" : 800,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078040883c9f5fd268d9b9f"),
+        "EMPNO" : 7654,
+        "ENAME" : "MARTIN",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "09/28/1981",
+        "NO" : 30
+}
+Type "it" for more
+> db.emp.find(MGR:7698).pretty()
+uncaught exception: SyntaxError: missing ) after argument list :
+@(shell):1:15
+> db.emp.find("MGR":"7698").pretty()
+uncaught exception: SyntaxError: missing ) after argument list :
+@(shell):1:17
+> db.emp.find({"MGR":"7698"}).pretty()
+> db.emp.find({MGR:7698}).pretty()
+{
+        "_id" : ObjectId("6078017583c9f5fd268d9b8d"),
+        "EMPNO" : 7499,
+        "ENAME" : "ALLEN",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "02/20/1981",
+        "SAL" : 1600,
+        "COMM" : 300,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078017583c9f5fd268d9b8e"),
+        "EMPNO" : 7521,
+        "ENAME" : "WARD",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "02/22/1981",
+        "SAL" : 1250,
+        "COMM" : 500,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b90"),
+        "EMPNO" : 7654,
+        "ENAME" : "MARTIN",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "09/28/1981",
+        "NO" : 30
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b95"),
+        "EMPNO" : 7844,
+        "ENAME" : "TURNER",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "09/08/1981",
+        "SAL" : 1500,
+        "COMM" : 0,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b97"),
+        "EMPNO" : 7900,
+        "ENAME" : "JAMES",
+        "JOB" : "CLERK",
+        "MGR" : 7698,
+        "HIREDATE" : "12/03/1981",
+        "SAL" : 950,
+        "COMM" : null,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078029c83c9f5fd268d9b9b"),
+        "EMPNO" : 7499,
+        "ENAME" : "ALLEN",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "02/20/1981",
+        "SAL" : 1600,
+        "COMM" : 300,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078029c83c9f5fd268d9b9c"),
+        "EMPNO" : 7521,
+        "ENAME" : "WARD",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "02/22/1981",
+        "SAL" : 1250,
+        "COMM" : 500,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078040883c9f5fd268d9b9f"),
+        "EMPNO" : 7654,
+        "ENAME" : "MARTIN",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "09/28/1981",
+        "NO" : 30
+}
+{
+        "_id" : ObjectId("6078040983c9f5fd268d9ba4"),
+        "EMPNO" : 7844,
+        "ENAME" : "TURNER",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "09/08/1981",
+        "SAL" : 1500,
+        "COMM" : 0,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078040983c9f5fd268d9ba6"),
+        "EMPNO" : 7900,
+        "ENAME" : "JAMES",
+        "JOB" : "CLERK",
+        "MGR" : 7698,
+        "HIREDATE" : "12/03/1981",
+        "SAL" : 950,
+        "COMM" : null,
+        "DEPTNO" : 30
+}
+> db.emp.find({SAL:{$lt:3000}}).pretty()
+{
+        "_id" : ObjectId("6078017583c9f5fd268d9b8c"),
+        "EMPNO" : 7369,
+        "ENAME" : "SMITH",
+        "JOB" : "CLERK",
+        "MGR" : 7902,
+        "HIREDATE" : "12/17/1980",
+        "SAL" : 800,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078017583c9f5fd268d9b8d"),
+        "EMPNO" : 7499,
+        "ENAME" : "ALLEN",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "02/20/1981",
+        "SAL" : 1600,
+        "COMM" : 300,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078017583c9f5fd268d9b8e"),
+        "EMPNO" : 7521,
+        "ENAME" : "WARD",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "02/22/1981",
+        "SAL" : 1250,
+        "COMM" : 500,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078018183c9f5fd268d9b8f"),
+        "EMPNO" : 7566,
+        "ENAME" : "JONES",
+        "JOB" : "MANAGER",
+        "MGR" : 7839,
+        "HIREDATE" : "04/02/1981",
+        "SAL" : 2975,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b91"),
+        "EMPNO" : 7698,
+        "ENAME" : "BLAKE",
+        "JOB" : "MANAGER",
+        "MGR" : 7839,
+        "HIREDATE" : "05/01/1981",
+        "SAL" : 2850,
+        "COMM" : null,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b92"),
+        "EMPNO" : 7782,
+        "ENAME" : "CLARK",
+        "JOB" : "MANAGER",
+        "MGR" : 7839,
+        "HIREDATE" : "06/09/1981",
+        "SAL" : 2450,
+        "COMM" : null,
+        "DEPTNO" : 10
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b95"),
+        "EMPNO" : 7844,
+        "ENAME" : "TURNER",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "09/08/1981",
+        "SAL" : 1500,
+        "COMM" : 0,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b96"),
+        "EMPNO" : 7876,
+        "ENAME" : "ADAMS",
+        "JOB" : "CLERK",
+        "MGR" : 7788,
+        "HIREDATE" : "01/12/2003",
+        "SAL" : 1100,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b97"),
+        "EMPNO" : 7900,
+        "ENAME" : "JAMES",
+        "JOB" : "CLERK",
+        "MGR" : 7698,
+        "HIREDATE" : "12/03/1981",
+        "SAL" : 950,
+        "COMM" : null,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078029c83c9f5fd268d9b9a"),
+        "EMPNO" : 7934,
+        "ENAME" : "MILLER",
+        "JOB" : "CLERK",
+        "MGR" : 7782,
+        "HIREDATE" : "01/23/2002",
+        "SAL" : 1300,
+        "COMM" : null,
+        "DEPTNO" : 10
+}
+{
+        "_id" : ObjectId("6078029c83c9f5fd268d9b9b"),
+        "EMPNO" : 7499,
+        "ENAME" : "ALLEN",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "02/20/1981",
+        "SAL" : 1600,
+        "COMM" : 300,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078029c83c9f5fd268d9b9c"),
+        "EMPNO" : 7521,
+        "ENAME" : "WARD",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "02/22/1981",
+        "SAL" : 1250,
+        "COMM" : 500,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("607802cc83c9f5fd268d9b9d"),
+        "EMPNO" : 7566,
+        "ENAME" : "JONES",
+        "JOB" : "MANAGER",
+        "MGR" : 7839,
+        "HIREDATE" : "04/02/1981",
+        "SAL" : 2975,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("607803ce83c9f5fd268d9b9e"),
+        "EMPNO" : 7369,
+        "ENAME" : "SMITH",
+        "JOB" : "CLERK",
+        "MGR" : 7902,
+        "HIREDATE" : "12/17/1980",
+        "SAL" : 800,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078040883c9f5fd268d9ba0"),
+        "EMPNO" : 7698,
+        "ENAME" : "BLAKE",
+        "JOB" : "MANAGER",
+        "MGR" : 7839,
+        "HIREDATE" : "05/01/1981",
+        "SAL" : 2850,
+        "COMM" : null,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078040883c9f5fd268d9ba1"),
+        "EMPNO" : 7782,
+        "ENAME" : "CLARK",
+        "JOB" : "MANAGER",
+        "MGR" : 7839,
+        "HIREDATE" : "06/09/1981",
+        "SAL" : 2450,
+        "COMM" : null,
+        "DEPTNO" : 10
+}
+{
+        "_id" : ObjectId("6078040983c9f5fd268d9ba4"),
+        "EMPNO" : 7844,
+        "ENAME" : "TURNER",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "09/08/1981",
+        "SAL" : 1500,
+        "COMM" : 0,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078040983c9f5fd268d9ba5"),
+        "EMPNO" : 7876,
+        "ENAME" : "ADAMS",
+        "JOB" : "CLERK",
+        "MGR" : 7788,
+        "HIREDATE" : "01/12/2003",
+        "SAL" : 1100,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078040983c9f5fd268d9ba6"),
+        "EMPNO" : 7900,
+        "ENAME" : "JAMES",
+        "JOB" : "CLERK",
+        "MGR" : 7698,
+        "HIREDATE" : "12/03/1981",
+        "SAL" : 950,
+        "COMM" : null,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078042d83c9f5fd268d9ba9"),
+        "EMPNO" : 7934,
+        "ENAME" : "MILLER",
+        "JOB" : "CLERK",
+        "MGR" : 7782,
+        "HIREDATE" : "01/23/2002",
+        "SAL" : 1300,
+        "COMM" : null,
+        "DEPTNO" : 10
+}
+> db.emp.find({deptno:{$in:[10,20]}}).pretty()
+> db.emp.find({deptno:{$in:[30,20]}}).pretty()
+> db.emp.find({DEPTNO:{$in:[30,20]}}).pretty()
+{
+        "_id" : ObjectId("6078017583c9f5fd268d9b8c"),
+        "EMPNO" : 7369,
+        "ENAME" : "SMITH",
+        "JOB" : "CLERK",
+        "MGR" : 7902,
+        "HIREDATE" : "12/17/1980",
+        "SAL" : 800,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078017583c9f5fd268d9b8d"),
+        "EMPNO" : 7499,
+        "ENAME" : "ALLEN",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "02/20/1981",
+        "SAL" : 1600,
+        "COMM" : 300,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078017583c9f5fd268d9b8e"),
+        "EMPNO" : 7521,
+        "ENAME" : "WARD",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "02/22/1981",
+        "SAL" : 1250,
+        "COMM" : 500,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078018183c9f5fd268d9b8f"),
+        "EMPNO" : 7566,
+        "ENAME" : "JONES",
+        "JOB" : "MANAGER",
+        "MGR" : 7839,
+        "HIREDATE" : "04/02/1981",
+        "SAL" : 2975,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b91"),
+        "EMPNO" : 7698,
+        "ENAME" : "BLAKE",
+        "JOB" : "MANAGER",
+        "MGR" : 7839,
+        "HIREDATE" : "05/01/1981",
+        "SAL" : 2850,
+        "COMM" : null,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b93"),
+        "EMPNO" : 7788,
+        "ENAME" : "SCOTT",
+        "JOB" : "ANALYST",
+        "MGR" : 7566,
+        "HIREDATE" : "12/09/1982",
+        "SAL" : 3000,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b95"),
+        "EMPNO" : 7844,
+        "ENAME" : "TURNER",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "09/08/1981",
+        "SAL" : 1500,
+        "COMM" : 0,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b96"),
+        "EMPNO" : 7876,
+        "ENAME" : "ADAMS",
+        "JOB" : "CLERK",
+        "MGR" : 7788,
+        "HIREDATE" : "01/12/2003",
+        "SAL" : 1100,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b97"),
+        "EMPNO" : 7900,
+        "ENAME" : "JAMES",
+        "JOB" : "CLERK",
+        "MGR" : 7698,
+        "HIREDATE" : "12/03/1981",
+        "SAL" : 950,
+        "COMM" : null,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078029c83c9f5fd268d9b99"),
+        "EMPNO" : 7902,
+        "ENAME" : "FORD",
+        "JOB" : "ANALYST",
+        "MGR" : 7566,
+        "HIREDATE" : "12/03/1981",
+        "SAL" : 3000,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078029c83c9f5fd268d9b9b"),
+        "EMPNO" : 7499,
+        "ENAME" : "ALLEN",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "02/20/1981",
+        "SAL" : 1600,
+        "COMM" : 300,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078029c83c9f5fd268d9b9c"),
+        "EMPNO" : 7521,
+        "ENAME" : "WARD",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "02/22/1981",
+        "SAL" : 1250,
+        "COMM" : 500,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("607802cc83c9f5fd268d9b9d"),
+        "EMPNO" : 7566,
+        "ENAME" : "JONES",
+        "JOB" : "MANAGER",
+        "MGR" : 7839,
+        "HIREDATE" : "04/02/1981",
+        "SAL" : 2975,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("607803ce83c9f5fd268d9b9e"),
+        "EMPNO" : 7369,
+        "ENAME" : "SMITH",
+        "JOB" : "CLERK",
+        "MGR" : 7902,
+        "HIREDATE" : "12/17/1980",
+        "SAL" : 800,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078040883c9f5fd268d9ba0"),
+        "EMPNO" : 7698,
+        "ENAME" : "BLAKE",
+        "JOB" : "MANAGER",
+        "MGR" : 7839,
+        "HIREDATE" : "05/01/1981",
+        "SAL" : 2850,
+        "COMM" : null,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078040883c9f5fd268d9ba2"),
+        "EMPNO" : 7788,
+        "ENAME" : "SCOTT",
+        "JOB" : "ANALYST",
+        "MGR" : 7566,
+        "HIREDATE" : "12/09/1982",
+        "SAL" : 3000,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078040983c9f5fd268d9ba4"),
+        "EMPNO" : 7844,
+        "ENAME" : "TURNER",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "09/08/1981",
+        "SAL" : 1500,
+        "COMM" : 0,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078040983c9f5fd268d9ba5"),
+        "EMPNO" : 7876,
+        "ENAME" : "ADAMS",
+        "JOB" : "CLERK",
+        "MGR" : 7788,
+        "HIREDATE" : "01/12/2003",
+        "SAL" : 1100,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078040983c9f5fd268d9ba6"),
+        "EMPNO" : 7900,
+        "ENAME" : "JAMES",
+        "JOB" : "CLERK",
+        "MGR" : 7698,
+        "HIREDATE" : "12/03/1981",
+        "SAL" : 950,
+        "COMM" : null,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078042d83c9f5fd268d9ba8"),
+        "EMPNO" : 7902,
+        "ENAME" : "FORD",
+        "JOB" : "ANALYST",
+        "MGR" : 7566,
+        "HIREDATE" : "12/03/1981",
+        "SAL" : 3000,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+> DB.EMP.FIND().PRETTY()
+uncaught exception: TypeError: DB.EMP is undefined :
+@(shell):1:1
+> DB.EMP.FIND().pretty()
+uncaught exception: TypeError: DB.EMP is undefined :
+@(shell):1:1
+> DB.EMP.find().pretty()
+uncaught exception: TypeError: DB.EMP is undefined :
+@(shell):1:1
+> db.EMP.find().pretty()
+> db.emp.find().pretty()
+{
+        "_id" : ObjectId("6078017583c9f5fd268d9b8c"),
+        "EMPNO" : 7369,
+        "ENAME" : "SMITH",
+        "JOB" : "CLERK",
+        "MGR" : 7902,
+        "HIREDATE" : "12/17/1980",
+        "SAL" : 800,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078017583c9f5fd268d9b8d"),
+        "EMPNO" : 7499,
+        "ENAME" : "ALLEN",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "02/20/1981",
+        "SAL" : 1600,
+        "COMM" : 300,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078017583c9f5fd268d9b8e"),
+        "EMPNO" : 7521,
+        "ENAME" : "WARD",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "02/22/1981",
+        "SAL" : 1250,
+        "COMM" : 500,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078018183c9f5fd268d9b8f"),
+        "EMPNO" : 7566,
+        "ENAME" : "JONES",
+        "JOB" : "MANAGER",
+        "MGR" : 7839,
+        "HIREDATE" : "04/02/1981",
+        "SAL" : 2975,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b90"),
+        "EMPNO" : 7654,
+        "ENAME" : "MARTIN",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "09/28/1981",
+        "NO" : 30
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b91"),
+        "EMPNO" : 7698,
+        "ENAME" : "BLAKE",
+        "JOB" : "MANAGER",
+        "MGR" : 7839,
+        "HIREDATE" : "05/01/1981",
+        "SAL" : 2850,
+        "COMM" : null,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b92"),
+        "EMPNO" : 7782,
+        "ENAME" : "CLARK",
+        "JOB" : "MANAGER",
+        "MGR" : 7839,
+        "HIREDATE" : "06/09/1981",
+        "SAL" : 2450,
+        "COMM" : null,
+        "DEPTNO" : 10
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b93"),
+        "EMPNO" : 7788,
+        "ENAME" : "SCOTT",
+        "JOB" : "ANALYST",
+        "MGR" : 7566,
+        "HIREDATE" : "12/09/1982",
+        "SAL" : 3000,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b94"),
+        "EMPNO" : 7839,
+        "ENAME" : "KING",
+        "JOB" : "PRESIDENT",
+        "MGR" : null,
+        "HIREDATE" : "11/17/1981",
+        "SAL" : 5000,
+        "COMM" : null,
+        "DEPTNO" : null
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b95"),
+        "EMPNO" : 7844,
+        "ENAME" : "TURNER",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "09/08/1981",
+        "SAL" : 1500,
+        "COMM" : 0,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b96"),
+        "EMPNO" : 7876,
+        "ENAME" : "ADAMS",
+        "JOB" : "CLERK",
+        "MGR" : 7788,
+        "HIREDATE" : "01/12/2003",
+        "SAL" : 1100,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b97"),
+        "EMPNO" : 7900,
+        "ENAME" : "JAMES",
+        "JOB" : "CLERK",
+        "MGR" : 7698,
+        "HIREDATE" : "12/03/1981",
+        "SAL" : 950,
+        "COMM" : null,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b98"),
+        "EMPNO" : 7901,
+        "ENAME" : "RAHUL_DRAVID",
+        "JOB" : "MANAGER",
+        "MGR" : 7839,
+        "HIREDATE" : "01/23/2012",
+        "SAL" : 3000,
+        "COMM" : null,
+        "DEPTNO" : 10
+}
+{
+        "_id" : ObjectId("6078029c83c9f5fd268d9b99"),
+        "EMPNO" : 7902,
+        "ENAME" : "FORD",
+        "JOB" : "ANALYST",
+        "MGR" : 7566,
+        "HIREDATE" : "12/03/1981",
+        "SAL" : 3000,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078029c83c9f5fd268d9b9a"),
+        "EMPNO" : 7934,
+        "ENAME" : "MILLER",
+        "JOB" : "CLERK",
+        "MGR" : 7782,
+        "HIREDATE" : "01/23/2002",
+        "SAL" : 1300,
+        "COMM" : null,
+        "DEPTNO" : 10
+}
+{
+        "_id" : ObjectId("6078029c83c9f5fd268d9b9b"),
+        "EMPNO" : 7499,
+        "ENAME" : "ALLEN",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "02/20/1981",
+        "SAL" : 1600,
+        "COMM" : 300,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078029c83c9f5fd268d9b9c"),
+        "EMPNO" : 7521,
+        "ENAME" : "WARD",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "02/22/1981",
+        "SAL" : 1250,
+        "COMM" : 500,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("607802cc83c9f5fd268d9b9d"),
+        "EMPNO" : 7566,
+        "ENAME" : "JONES",
+        "JOB" : "MANAGER",
+        "MGR" : 7839,
+        "HIREDATE" : "04/02/1981",
+        "SAL" : 2975,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("607803ce83c9f5fd268d9b9e"),
+        "EMPNO" : 7369,
+        "ENAME" : "SMITH",
+        "JOB" : "CLERK",
+        "MGR" : 7902,
+        "HIREDATE" : "12/17/1980",
+        "SAL" : 800,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078040883c9f5fd268d9b9f"),
+        "EMPNO" : 7654,
+        "ENAME" : "MARTIN",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "09/28/1981",
+        "NO" : 30
+}
+Type "it" for more
+> db.emp.find({$and:[{DEPTNO:20}{$lte:{sal:3000}}]})
+uncaught exception: SyntaxError: missing ] after element list :
+@(shell):1:30
+> db.emp.find({$or:[{DEPTNO:20}{$lte:{SAL:3000}}]})
+uncaught exception: SyntaxError: missing ] after element list :
+@(shell):1:29
+> db.emp.find({$or:[{DEPTNO:20},{$lte:{SAL:3000}}]})
+Error: error: {
+        "ok" : 0,
+        "errmsg" : "unknown top level operator: $lte",
+        "code" : 2,
+        "codeName" : "BadValue"
+}
+> db.emp.find({$or:[{DEPTNO:20},{$le:{SAL:3000}}]})
+Error: error: {
+        "ok" : 0,
+        "errmsg" : "unknown top level operator: $le",
+        "code" : 2,
+        "codeName" : "BadValue"
+}
+> db.emp.find({$or:[{DEPTNO:20},{SAL:{$lte:3000}}]})
+{ "_id" : ObjectId("6078017583c9f5fd268d9b8c"), "EMPNO" : 7369, "ENAME" : "SMITH", "JOB" : "CLERK", "MGR" : 7902, "HIREDATE" : "12/17/1980", "SAL" : 800, "COMM" : null, "DEPTNO" : 20 }
+{ "_id" : ObjectId("6078017583c9f5fd268d9b8d"), "EMPNO" : 7499, "ENAME" : "ALLEN", "JOB" : "SALESMAN", "MGR" : 7698, "HIREDATE" : "02/20/1981", "SAL" : 1600, "COMM" : 300, "DEPTNO" : 30 }
+{ "_id" : ObjectId("6078017583c9f5fd268d9b8e"), "EMPNO" : 7521, "ENAME" : "WARD", "JOB" : "SALESMAN", "MGR" : 7698, "HIREDATE" : "02/22/1981", "SAL" : 1250, "COMM" : 500, "DEPTNO" : 30 }
+{ "_id" : ObjectId("6078018183c9f5fd268d9b8f"), "EMPNO" : 7566, "ENAME" : "JONES", "JOB" : "MANAGER", "MGR" : 7839, "HIREDATE" : "04/02/1981", "SAL" : 2975, "COMM" : null, "DEPTNO" : 20 }
+{ "_id" : ObjectId("6078029b83c9f5fd268d9b91"), "EMPNO" : 7698, "ENAME" : "BLAKE", "JOB" : "MANAGER", "MGR" : 7839, "HIREDATE" : "05/01/1981", "SAL" : 2850, "COMM" : null, "DEPTNO" : 30 }
+{ "_id" : ObjectId("6078029b83c9f5fd268d9b92"), "EMPNO" : 7782, "ENAME" : "CLARK", "JOB" : "MANAGER", "MGR" : 7839, "HIREDATE" : "06/09/1981", "SAL" : 2450, "COMM" : null, "DEPTNO" : 10 }
+{ "_id" : ObjectId("6078029b83c9f5fd268d9b93"), "EMPNO" : 7788, "ENAME" : "SCOTT", "JOB" : "ANALYST", "MGR" : 7566, "HIREDATE" : "12/09/1982", "SAL" : 3000, "COMM" : null, "DEPTNO" : 20 }
+{ "_id" : ObjectId("6078029b83c9f5fd268d9b95"), "EMPNO" : 7844, "ENAME" : "TURNER", "JOB" : "SALESMAN", "MGR" : 7698, "HIREDATE" : "09/08/1981", "SAL" : 1500, "COMM" : 0, "DEPTNO" : 30 }
+{ "_id" : ObjectId("6078029b83c9f5fd268d9b96"), "EMPNO" : 7876, "ENAME" : "ADAMS", "JOB" : "CLERK", "MGR" : 7788, "HIREDATE" : "01/12/2003", "SAL" : 1100, "COMM" : null, "DEPTNO" : 20 }
+{ "_id" : ObjectId("6078029b83c9f5fd268d9b97"), "EMPNO" : 7900, "ENAME" : "JAMES", "JOB" : "CLERK", "MGR" : 7698, "HIREDATE" : "12/03/1981", "SAL" : 950, "COMM" : null, "DEPTNO" : 30 }
+{ "_id" : ObjectId("6078029b83c9f5fd268d9b98"), "EMPNO" : 7901, "ENAME" : "RAHUL_DRAVID", "JOB" : "MANAGER", "MGR" : 7839, "HIREDATE" : "01/23/2012", "SAL" : 3000, "COMM" : null, "DEPTNO" : 10 }
+{ "_id" : ObjectId("6078029c83c9f5fd268d9b99"), "EMPNO" : 7902, "ENAME" : "FORD", "JOB" : "ANALYST", "MGR" : 7566, "HIREDATE" : "12/03/1981", "SAL" : 3000, "COMM" : null, "DEPTNO" : 20 }
+{ "_id" : ObjectId("6078029c83c9f5fd268d9b9a"), "EMPNO" : 7934, "ENAME" : "MILLER", "JOB" : "CLERK", "MGR" : 7782, "HIREDATE" : "01/23/2002", "SAL" : 1300, "COMM" : null, "DEPTNO" : 10 }
+{ "_id" : ObjectId("6078029c83c9f5fd268d9b9b"), "EMPNO" : 7499, "ENAME" : "ALLEN", "JOB" : "SALESMAN", "MGR" : 7698, "HIREDATE" : "02/20/1981", "SAL" : 1600, "COMM" : 300, "DEPTNO" : 30 }
+{ "_id" : ObjectId("6078029c83c9f5fd268d9b9c"), "EMPNO" : 7521, "ENAME" : "WARD", "JOB" : "SALESMAN", "MGR" : 7698, "HIREDATE" : "02/22/1981", "SAL" : 1250, "COMM" : 500, "DEPTNO" : 30 }
+{ "_id" : ObjectId("607802cc83c9f5fd268d9b9d"), "EMPNO" : 7566, "ENAME" : "JONES", "JOB" : "MANAGER", "MGR" : 7839, "HIREDATE" : "04/02/1981", "SAL" : 2975, "COMM" : null, "DEPTNO" : 20 }
+{ "_id" : ObjectId("607803ce83c9f5fd268d9b9e"), "EMPNO" : 7369, "ENAME" : "SMITH", "JOB" : "CLERK", "MGR" : 7902, "HIREDATE" : "12/17/1980", "SAL" : 800, "COMM" : null, "DEPTNO" : 20 }
+{ "_id" : ObjectId("6078040883c9f5fd268d9ba0"), "EMPNO" : 7698, "ENAME" : "BLAKE", "JOB" : "MANAGER", "MGR" : 7839, "HIREDATE" : "05/01/1981", "SAL" : 2850, "COMM" : null, "DEPTNO" : 30 }
+{ "_id" : ObjectId("6078040883c9f5fd268d9ba1"), "EMPNO" : 7782, "ENAME" : "CLARK", "JOB" : "MANAGER", "MGR" : 7839, "HIREDATE" : "06/09/1981", "SAL" : 2450, "COMM" : null, "DEPTNO" : 10 }
+{ "_id" : ObjectId("6078040883c9f5fd268d9ba2"), "EMPNO" : 7788, "ENAME" : "SCOTT", "JOB" : "ANALYST", "MGR" : 7566, "HIREDATE" : "12/09/1982", "SAL" : 3000, "COMM" : null, "DEPTNO" : 20 }
+Type "it" for more
+> db.emp.find({$and:[{DEPTNO:20},{SAL:{$lte:3000}}]})
+{ "_id" : ObjectId("6078017583c9f5fd268d9b8c"), "EMPNO" : 7369, "ENAME" : "SMITH", "JOB" : "CLERK", "MGR" : 7902, "HIREDATE" : "12/17/1980", "SAL" : 800, "COMM" : null, "DEPTNO" : 20 }
+{ "_id" : ObjectId("6078018183c9f5fd268d9b8f"), "EMPNO" : 7566, "ENAME" : "JONES", "JOB" : "MANAGER", "MGR" : 7839, "HIREDATE" : "04/02/1981", "SAL" : 2975, "COMM" : null, "DEPTNO" : 20 }
+{ "_id" : ObjectId("6078029b83c9f5fd268d9b93"), "EMPNO" : 7788, "ENAME" : "SCOTT", "JOB" : "ANALYST", "MGR" : 7566, "HIREDATE" : "12/09/1982", "SAL" : 3000, "COMM" : null, "DEPTNO" : 20 }
+{ "_id" : ObjectId("6078029b83c9f5fd268d9b96"), "EMPNO" : 7876, "ENAME" : "ADAMS", "JOB" : "CLERK", "MGR" : 7788, "HIREDATE" : "01/12/2003", "SAL" : 1100, "COMM" : null, "DEPTNO" : 20 }
+{ "_id" : ObjectId("6078029c83c9f5fd268d9b99"), "EMPNO" : 7902, "ENAME" : "FORD", "JOB" : "ANALYST", "MGR" : 7566, "HIREDATE" : "12/03/1981", "SAL" : 3000, "COMM" : null, "DEPTNO" : 20 }
+{ "_id" : ObjectId("607802cc83c9f5fd268d9b9d"), "EMPNO" : 7566, "ENAME" : "JONES", "JOB" : "MANAGER", "MGR" : 7839, "HIREDATE" : "04/02/1981", "SAL" : 2975, "COMM" : null, "DEPTNO" : 20 }
+{ "_id" : ObjectId("607803ce83c9f5fd268d9b9e"), "EMPNO" : 7369, "ENAME" : "SMITH", "JOB" : "CLERK", "MGR" : 7902, "HIREDATE" : "12/17/1980", "SAL" : 800, "COMM" : null, "DEPTNO" : 20 }
+{ "_id" : ObjectId("6078040883c9f5fd268d9ba2"), "EMPNO" : 7788, "ENAME" : "SCOTT", "JOB" : "ANALYST", "MGR" : 7566, "HIREDATE" : "12/09/1982", "SAL" : 3000, "COMM" : null, "DEPTNO" : 20 }
+{ "_id" : ObjectId("6078040983c9f5fd268d9ba5"), "EMPNO" : 7876, "ENAME" : "ADAMS", "JOB" : "CLERK", "MGR" : 7788, "HIREDATE" : "01/12/2003", "SAL" : 1100, "COMM" : null, "DEPTNO" : 20 }
+{ "_id" : ObjectId("6078042d83c9f5fd268d9ba8"), "EMPNO" : 7902, "ENAME" : "FORD", "JOB" : "ANALYST", "MGR" : 7566, "HIREDATE" : "12/03/1981", "SAL" : 3000, "COMM" : null, "DEPTNO" : 20 }
+> db.emp.find({$and:[{DEPTNO:20},{SAL:{$lte:3000}}]}).pretty()
+{
+        "_id" : ObjectId("6078017583c9f5fd268d9b8c"),
+        "EMPNO" : 7369,
+        "ENAME" : "SMITH",
+        "JOB" : "CLERK",
+        "MGR" : 7902,
+        "HIREDATE" : "12/17/1980",
+        "SAL" : 800,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078018183c9f5fd268d9b8f"),
+        "EMPNO" : 7566,
+        "ENAME" : "JONES",
+        "JOB" : "MANAGER",
+        "MGR" : 7839,
+        "HIREDATE" : "04/02/1981",
+        "SAL" : 2975,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b93"),
+        "EMPNO" : 7788,
+        "ENAME" : "SCOTT",
+        "JOB" : "ANALYST",
+        "MGR" : 7566,
+        "HIREDATE" : "12/09/1982",
+        "SAL" : 3000,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b96"),
+        "EMPNO" : 7876,
+        "ENAME" : "ADAMS",
+        "JOB" : "CLERK",
+        "MGR" : 7788,
+        "HIREDATE" : "01/12/2003",
+        "SAL" : 1100,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078029c83c9f5fd268d9b99"),
+        "EMPNO" : 7902,
+        "ENAME" : "FORD",
+        "JOB" : "ANALYST",
+        "MGR" : 7566,
+        "HIREDATE" : "12/03/1981",
+        "SAL" : 3000,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("607802cc83c9f5fd268d9b9d"),
+        "EMPNO" : 7566,
+        "ENAME" : "JONES",
+        "JOB" : "MANAGER",
+        "MGR" : 7839,
+        "HIREDATE" : "04/02/1981",
+        "SAL" : 2975,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("607803ce83c9f5fd268d9b9e"),
+        "EMPNO" : 7369,
+        "ENAME" : "SMITH",
+        "JOB" : "CLERK",
+        "MGR" : 7902,
+        "HIREDATE" : "12/17/1980",
+        "SAL" : 800,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078040883c9f5fd268d9ba2"),
+        "EMPNO" : 7788,
+        "ENAME" : "SCOTT",
+        "JOB" : "ANALYST",
+        "MGR" : 7566,
+        "HIREDATE" : "12/09/1982",
+        "SAL" : 3000,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078040983c9f5fd268d9ba5"),
+        "EMPNO" : 7876,
+        "ENAME" : "ADAMS",
+        "JOB" : "CLERK",
+        "MGR" : 7788,
+        "HIREDATE" : "01/12/2003",
+        "SAL" : 1100,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078042d83c9f5fd268d9ba8"),
+        "EMPNO" : 7902,
+        "ENAME" : "FORD",
+        "JOB" : "ANALYST",
+        "MGR" : 7566,
+        "HIREDATE" : "12/03/1981",
+        "SAL" : 3000,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+> db.emp.update({SAL:3000},{$set{SAL:3999}}})
+uncaught exception: SyntaxError: missing : after property id :
+@(shell):1:30
+> db.emp.update({SAL:3000},{$set:{SAL:3999}}})
+uncaught exception: SyntaxError: missing ) after argument list :
+@(shell):1:42
+> db.emp.update({SAL:3000},{$set:{SAL:3999}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.emp.update({SAL:3000},{$set:{SAL:3999}},{multi:true})
+WriteResult({ "nMatched" : 5, "nUpserted" : 0, "nModified" : 5 })
+> db.emp.remove({sal:3999})
+WriteResult({ "nRemoved" : 0 })
+> db.emp.find({EMPNO,ENAME.DEPTNO})
+uncaught exception: SyntaxError: missing : after property id :
+@(shell):1:24
+> db.emp.find({EMPNO:1,ENAME:1.DEPTNO:0})
+uncaught exception: SyntaxError: identifier starts immediately after numeric literal :
+@(shell):1:27
+> db.emp.find({EMPNO:1,"ENAME":1,DEPTNO:0})
+> db.emp.find({EMPNO:1,"ENAME":1,DEPTNO:1})
+> db.emp.find({},{EMPNO:1,"ENAME":1,DEPTNO:1})
+{ "_id" : ObjectId("6078017583c9f5fd268d9b8c"), "EMPNO" : 7369, "ENAME" : "SMITH", "DEPTNO" : 20 }
+{ "_id" : ObjectId("6078017583c9f5fd268d9b8d"), "EMPNO" : 7499, "ENAME" : "ALLEN", "DEPTNO" : 30 }
+{ "_id" : ObjectId("6078017583c9f5fd268d9b8e"), "EMPNO" : 7521, "ENAME" : "WARD", "DEPTNO" : 30 }
+{ "_id" : ObjectId("6078018183c9f5fd268d9b8f"), "EMPNO" : 7566, "ENAME" : "JONES", "DEPTNO" : 20 }
+{ "_id" : ObjectId("6078029b83c9f5fd268d9b90"), "EMPNO" : 7654, "ENAME" : "MARTIN" }
+{ "_id" : ObjectId("6078029b83c9f5fd268d9b91"), "EMPNO" : 7698, "ENAME" : "BLAKE", "DEPTNO" : 30 }
+{ "_id" : ObjectId("6078029b83c9f5fd268d9b92"), "EMPNO" : 7782, "ENAME" : "CLARK", "DEPTNO" : 10 }
+{ "_id" : ObjectId("6078029b83c9f5fd268d9b93"), "EMPNO" : 7788, "ENAME" : "SCOTT", "DEPTNO" : 20 }
+{ "_id" : ObjectId("6078029b83c9f5fd268d9b94"), "EMPNO" : 7839, "ENAME" : "KING", "DEPTNO" : null }
+{ "_id" : ObjectId("6078029b83c9f5fd268d9b95"), "EMPNO" : 7844, "ENAME" : "TURNER", "DEPTNO" : 30 }
+{ "_id" : ObjectId("6078029b83c9f5fd268d9b96"), "EMPNO" : 7876, "ENAME" : "ADAMS", "DEPTNO" : 20 }
+{ "_id" : ObjectId("6078029b83c9f5fd268d9b97"), "EMPNO" : 7900, "ENAME" : "JAMES", "DEPTNO" : 30 }
+{ "_id" : ObjectId("6078029b83c9f5fd268d9b98"), "EMPNO" : 7901, "ENAME" : "RAHUL_DRAVID", "DEPTNO" : 10 }
+{ "_id" : ObjectId("6078029c83c9f5fd268d9b99"), "EMPNO" : 7902, "ENAME" : "FORD", "DEPTNO" : 20 }
+{ "_id" : ObjectId("6078029c83c9f5fd268d9b9a"), "EMPNO" : 7934, "ENAME" : "MILLER", "DEPTNO" : 10 }
+{ "_id" : ObjectId("6078029c83c9f5fd268d9b9b"), "EMPNO" : 7499, "ENAME" : "ALLEN", "DEPTNO" : 30 }
+{ "_id" : ObjectId("6078029c83c9f5fd268d9b9c"), "EMPNO" : 7521, "ENAME" : "WARD", "DEPTNO" : 30 }
+{ "_id" : ObjectId("607802cc83c9f5fd268d9b9d"), "EMPNO" : 7566, "ENAME" : "JONES", "DEPTNO" : 20 }
+{ "_id" : ObjectId("607803ce83c9f5fd268d9b9e"), "EMPNO" : 7369, "ENAME" : "SMITH", "DEPTNO" : 20 }
+{ "_id" : ObjectId("6078040883c9f5fd268d9b9f"), "EMPNO" : 7654, "ENAME" : "MARTIN" }
+Type "it" for more
+> db.emp.find({},{EMPNO:1,"ENAME":1,DEPTNO:1}).pretty()
+{
+        "_id" : ObjectId("6078017583c9f5fd268d9b8c"),
+        "EMPNO" : 7369,
+        "ENAME" : "SMITH",
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078017583c9f5fd268d9b8d"),
+        "EMPNO" : 7499,
+        "ENAME" : "ALLEN",
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078017583c9f5fd268d9b8e"),
+        "EMPNO" : 7521,
+        "ENAME" : "WARD",
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078018183c9f5fd268d9b8f"),
+        "EMPNO" : 7566,
+        "ENAME" : "JONES",
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b90"),
+        "EMPNO" : 7654,
+        "ENAME" : "MARTIN"
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b91"),
+        "EMPNO" : 7698,
+        "ENAME" : "BLAKE",
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b92"),
+        "EMPNO" : 7782,
+        "ENAME" : "CLARK",
+        "DEPTNO" : 10
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b93"),
+        "EMPNO" : 7788,
+        "ENAME" : "SCOTT",
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b94"),
+        "EMPNO" : 7839,
+        "ENAME" : "KING",
+        "DEPTNO" : null
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b95"),
+        "EMPNO" : 7844,
+        "ENAME" : "TURNER",
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b96"),
+        "EMPNO" : 7876,
+        "ENAME" : "ADAMS",
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b97"),
+        "EMPNO" : 7900,
+        "ENAME" : "JAMES",
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b98"),
+        "EMPNO" : 7901,
+        "ENAME" : "RAHUL_DRAVID",
+        "DEPTNO" : 10
+}
+{
+        "_id" : ObjectId("6078029c83c9f5fd268d9b99"),
+        "EMPNO" : 7902,
+        "ENAME" : "FORD",
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078029c83c9f5fd268d9b9a"),
+        "EMPNO" : 7934,
+        "ENAME" : "MILLER",
+        "DEPTNO" : 10
+}
+{
+        "_id" : ObjectId("6078029c83c9f5fd268d9b9b"),
+        "EMPNO" : 7499,
+        "ENAME" : "ALLEN",
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078029c83c9f5fd268d9b9c"),
+        "EMPNO" : 7521,
+        "ENAME" : "WARD",
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("607802cc83c9f5fd268d9b9d"),
+        "EMPNO" : 7566,
+        "ENAME" : "JONES",
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("607803ce83c9f5fd268d9b9e"),
+        "EMPNO" : 7369,
+        "ENAME" : "SMITH",
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078040883c9f5fd268d9b9f"),
+        "EMPNO" : 7654,
+        "ENAME" : "MARTIN"
+}
+Type "it" for more
+> db.emp.find({},{EMPNO:1,"ENAME":1,DEPTNO:0}).pretty()
+Error: error: {
+        "ok" : 0,
+        "errmsg" : "Cannot do exclusion on field DEPTNO in inclusion projection",
+        "code" : 31254,
+        "codeName" : "Location31254"
+}
+> db.emp.find({},{EMPNO:1,"ENAME":1,DEPTNO:1}).pretty()
+{
+        "_id" : ObjectId("6078017583c9f5fd268d9b8c"),
+        "EMPNO" : 7369,
+        "ENAME" : "SMITH",
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078017583c9f5fd268d9b8d"),
+        "EMPNO" : 7499,
+        "ENAME" : "ALLEN",
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078017583c9f5fd268d9b8e"),
+        "EMPNO" : 7521,
+        "ENAME" : "WARD",
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078018183c9f5fd268d9b8f"),
+        "EMPNO" : 7566,
+        "ENAME" : "JONES",
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b90"),
+        "EMPNO" : 7654,
+        "ENAME" : "MARTIN"
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b91"),
+        "EMPNO" : 7698,
+        "ENAME" : "BLAKE",
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b92"),
+        "EMPNO" : 7782,
+        "ENAME" : "CLARK",
+        "DEPTNO" : 10
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b93"),
+        "EMPNO" : 7788,
+        "ENAME" : "SCOTT",
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b94"),
+        "EMPNO" : 7839,
+        "ENAME" : "KING",
+        "DEPTNO" : null
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b95"),
+        "EMPNO" : 7844,
+        "ENAME" : "TURNER",
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b96"),
+        "EMPNO" : 7876,
+        "ENAME" : "ADAMS",
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b97"),
+        "EMPNO" : 7900,
+        "ENAME" : "JAMES",
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b98"),
+        "EMPNO" : 7901,
+        "ENAME" : "RAHUL_DRAVID",
+        "DEPTNO" : 10
+}
+{
+        "_id" : ObjectId("6078029c83c9f5fd268d9b99"),
+        "EMPNO" : 7902,
+        "ENAME" : "FORD",
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078029c83c9f5fd268d9b9a"),
+        "EMPNO" : 7934,
+        "ENAME" : "MILLER",
+        "DEPTNO" : 10
+}
+{
+        "_id" : ObjectId("6078029c83c9f5fd268d9b9b"),
+        "EMPNO" : 7499,
+        "ENAME" : "ALLEN",
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078029c83c9f5fd268d9b9c"),
+        "EMPNO" : 7521,
+        "ENAME" : "WARD",
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("607802cc83c9f5fd268d9b9d"),
+        "EMPNO" : 7566,
+        "ENAME" : "JONES",
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("607803ce83c9f5fd268d9b9e"),
+        "EMPNO" : 7369,
+        "ENAME" : "SMITH",
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078040883c9f5fd268d9b9f"),
+        "EMPNO" : 7654,
+        "ENAME" : "MARTIN"
+}
+Type "it" for more
+> db.emp.find({},{EMPNO:1,"ENAME":1,DEPTNO:1}).limit(5).pretty()
+{
+        "_id" : ObjectId("6078017583c9f5fd268d9b8c"),
+        "EMPNO" : 7369,
+        "ENAME" : "SMITH",
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078017583c9f5fd268d9b8d"),
+        "EMPNO" : 7499,
+        "ENAME" : "ALLEN",
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078017583c9f5fd268d9b8e"),
+        "EMPNO" : 7521,
+        "ENAME" : "WARD",
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078018183c9f5fd268d9b8f"),
+        "EMPNO" : 7566,
+        "ENAME" : "JONES",
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b90"),
+        "EMPNO" : 7654,
+        "ENAME" : "MARTIN"
+}
+> db.emp.find().limit(5).skip({DEPTNO:30})
+Error: error: {
+        "ok" : 0,
+        "errmsg" : "Failed to parse: { find: \"emp\", filter: {}, skip: { DEPTNO: 30.0 }, limit: 5.0, singleBatch: false, lsid: { id: UUID(\"81aec63f-0d20-402f-92d0-c9f954693759\") }, $db: \"training21\" }. 'skip' field must be numeric.",
+        "code" : 9,
+        "codeName" : "FailedToParse"
+}
+> db.emp.find().limit(5).skip(2)
+{ "_id" : ObjectId("6078017583c9f5fd268d9b8e"), "EMPNO" : 7521, "ENAME" : "WARD", "JOB" : "SALESMAN", "MGR" : 7698, "HIREDATE" : "02/22/1981", "SAL" : 1250, "COMM" : 500, "DEPTNO" : 30 }
+{ "_id" : ObjectId("6078018183c9f5fd268d9b8f"), "EMPNO" : 7566, "ENAME" : "JONES", "JOB" : "MANAGER", "MGR" : 7839, "HIREDATE" : "04/02/1981", "SAL" : 2975, "COMM" : null, "DEPTNO" : 20 }
+{ "_id" : ObjectId("6078029b83c9f5fd268d9b90"), "EMPNO" : 7654, "ENAME" : "MARTIN", "JOB" : "SALESMAN", "MGR" : 7698, "HIREDATE" : "09/28/1981", "NO" : 30 }
+{ "_id" : ObjectId("6078029b83c9f5fd268d9b91"), "EMPNO" : 7698, "ENAME" : "BLAKE", "JOB" : "MANAGER", "MGR" : 7839, "HIREDATE" : "05/01/1981", "SAL" : 2850, "COMM" : null, "DEPTNO" : 30 }
+{ "_id" : ObjectId("6078029b83c9f5fd268d9b92"), "EMPNO" : 7782, "ENAME" : "CLARK", "JOB" : "MANAGER", "MGR" : 7839, "HIREDATE" : "06/09/1981", "SAL" : 2450, "COMM" : null, "DEPTNO" : 10 }
+> db.emp.find().pretty()
+{
+        "_id" : ObjectId("6078017583c9f5fd268d9b8c"),
+        "EMPNO" : 7369,
+        "ENAME" : "SMITH",
+        "JOB" : "CLERK",
+        "MGR" : 7902,
+        "HIREDATE" : "12/17/1980",
+        "SAL" : 800,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078017583c9f5fd268d9b8d"),
+        "EMPNO" : 7499,
+        "ENAME" : "ALLEN",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "02/20/1981",
+        "SAL" : 1600,
+        "COMM" : 300,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078017583c9f5fd268d9b8e"),
+        "EMPNO" : 7521,
+        "ENAME" : "WARD",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "02/22/1981",
+        "SAL" : 1250,
+        "COMM" : 500,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078018183c9f5fd268d9b8f"),
+        "EMPNO" : 7566,
+        "ENAME" : "JONES",
+        "JOB" : "MANAGER",
+        "MGR" : 7839,
+        "HIREDATE" : "04/02/1981",
+        "SAL" : 2975,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b90"),
+        "EMPNO" : 7654,
+        "ENAME" : "MARTIN",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "09/28/1981",
+        "NO" : 30
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b91"),
+        "EMPNO" : 7698,
+        "ENAME" : "BLAKE",
+        "JOB" : "MANAGER",
+        "MGR" : 7839,
+        "HIREDATE" : "05/01/1981",
+        "SAL" : 2850,
+        "COMM" : null,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b92"),
+        "EMPNO" : 7782,
+        "ENAME" : "CLARK",
+        "JOB" : "MANAGER",
+        "MGR" : 7839,
+        "HIREDATE" : "06/09/1981",
+        "SAL" : 2450,
+        "COMM" : null,
+        "DEPTNO" : 10
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b93"),
+        "EMPNO" : 7788,
+        "ENAME" : "SCOTT",
+        "JOB" : "ANALYST",
+        "MGR" : 7566,
+        "HIREDATE" : "12/09/1982",
+        "SAL" : 3999,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b94"),
+        "EMPNO" : 7839,
+        "ENAME" : "KING",
+        "JOB" : "PRESIDENT",
+        "MGR" : null,
+        "HIREDATE" : "11/17/1981",
+        "SAL" : 5000,
+        "COMM" : null,
+        "DEPTNO" : null
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b95"),
+        "EMPNO" : 7844,
+        "ENAME" : "TURNER",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "09/08/1981",
+        "SAL" : 1500,
+        "COMM" : 0,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b96"),
+        "EMPNO" : 7876,
+        "ENAME" : "ADAMS",
+        "JOB" : "CLERK",
+        "MGR" : 7788,
+        "HIREDATE" : "01/12/2003",
+        "SAL" : 1100,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b97"),
+        "EMPNO" : 7900,
+        "ENAME" : "JAMES",
+        "JOB" : "CLERK",
+        "MGR" : 7698,
+        "HIREDATE" : "12/03/1981",
+        "SAL" : 950,
+        "COMM" : null,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b98"),
+        "EMPNO" : 7901,
+        "ENAME" : "RAHUL_DRAVID",
+        "JOB" : "MANAGER",
+        "MGR" : 7839,
+        "HIREDATE" : "01/23/2012",
+        "SAL" : 3999,
+        "COMM" : null,
+        "DEPTNO" : 10
+}
+{
+        "_id" : ObjectId("6078029c83c9f5fd268d9b99"),
+        "EMPNO" : 7902,
+        "ENAME" : "FORD",
+        "JOB" : "ANALYST",
+        "MGR" : 7566,
+        "HIREDATE" : "12/03/1981",
+        "SAL" : 3999,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078029c83c9f5fd268d9b9a"),
+        "EMPNO" : 7934,
+        "ENAME" : "MILLER",
+        "JOB" : "CLERK",
+        "MGR" : 7782,
+        "HIREDATE" : "01/23/2002",
+        "SAL" : 1300,
+        "COMM" : null,
+        "DEPTNO" : 10
+}
+{
+        "_id" : ObjectId("6078029c83c9f5fd268d9b9b"),
+        "EMPNO" : 7499,
+        "ENAME" : "ALLEN",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "02/20/1981",
+        "SAL" : 1600,
+        "COMM" : 300,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078029c83c9f5fd268d9b9c"),
+        "EMPNO" : 7521,
+        "ENAME" : "WARD",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "02/22/1981",
+        "SAL" : 1250,
+        "COMM" : 500,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("607802cc83c9f5fd268d9b9d"),
+        "EMPNO" : 7566,
+        "ENAME" : "JONES",
+        "JOB" : "MANAGER",
+        "MGR" : 7839,
+        "HIREDATE" : "04/02/1981",
+        "SAL" : 2975,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("607803ce83c9f5fd268d9b9e"),
+        "EMPNO" : 7369,
+        "ENAME" : "SMITH",
+        "JOB" : "CLERK",
+        "MGR" : 7902,
+        "HIREDATE" : "12/17/1980",
+        "SAL" : 800,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078040883c9f5fd268d9b9f"),
+        "EMPNO" : 7654,
+        "ENAME" : "MARTIN",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "09/28/1981",
+        "NO" : 30
+}
+Type "it" for more
+> db.emp.find().sort(DEPTNO:-1)
+uncaught exception: SyntaxError: missing ) after argument list :
+@(shell):1:25
+> db.emp.find().sort({DEPTNO:-1}).pretty()
+{
+        "_id" : ObjectId("6078017583c9f5fd268d9b8d"),
+        "EMPNO" : 7499,
+        "ENAME" : "ALLEN",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "02/20/1981",
+        "SAL" : 1600,
+        "COMM" : 300,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078017583c9f5fd268d9b8e"),
+        "EMPNO" : 7521,
+        "ENAME" : "WARD",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "02/22/1981",
+        "SAL" : 1250,
+        "COMM" : 500,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b91"),
+        "EMPNO" : 7698,
+        "ENAME" : "BLAKE",
+        "JOB" : "MANAGER",
+        "MGR" : 7839,
+        "HIREDATE" : "05/01/1981",
+        "SAL" : 2850,
+        "COMM" : null,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b95"),
+        "EMPNO" : 7844,
+        "ENAME" : "TURNER",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "09/08/1981",
+        "SAL" : 1500,
+        "COMM" : 0,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b97"),
+        "EMPNO" : 7900,
+        "ENAME" : "JAMES",
+        "JOB" : "CLERK",
+        "MGR" : 7698,
+        "HIREDATE" : "12/03/1981",
+        "SAL" : 950,
+        "COMM" : null,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078029c83c9f5fd268d9b9b"),
+        "EMPNO" : 7499,
+        "ENAME" : "ALLEN",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "02/20/1981",
+        "SAL" : 1600,
+        "COMM" : 300,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078029c83c9f5fd268d9b9c"),
+        "EMPNO" : 7521,
+        "ENAME" : "WARD",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "02/22/1981",
+        "SAL" : 1250,
+        "COMM" : 500,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078040883c9f5fd268d9ba0"),
+        "EMPNO" : 7698,
+        "ENAME" : "BLAKE",
+        "JOB" : "MANAGER",
+        "MGR" : 7839,
+        "HIREDATE" : "05/01/1981",
+        "SAL" : 2850,
+        "COMM" : null,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078040983c9f5fd268d9ba4"),
+        "EMPNO" : 7844,
+        "ENAME" : "TURNER",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "09/08/1981",
+        "SAL" : 1500,
+        "COMM" : 0,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078040983c9f5fd268d9ba6"),
+        "EMPNO" : 7900,
+        "ENAME" : "JAMES",
+        "JOB" : "CLERK",
+        "MGR" : 7698,
+        "HIREDATE" : "12/03/1981",
+        "SAL" : 950,
+        "COMM" : null,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078017583c9f5fd268d9b8c"),
+        "EMPNO" : 7369,
+        "ENAME" : "SMITH",
+        "JOB" : "CLERK",
+        "MGR" : 7902,
+        "HIREDATE" : "12/17/1980",
+        "SAL" : 800,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078018183c9f5fd268d9b8f"),
+        "EMPNO" : 7566,
+        "ENAME" : "JONES",
+        "JOB" : "MANAGER",
+        "MGR" : 7839,
+        "HIREDATE" : "04/02/1981",
+        "SAL" : 2975,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b93"),
+        "EMPNO" : 7788,
+        "ENAME" : "SCOTT",
+        "JOB" : "ANALYST",
+        "MGR" : 7566,
+        "HIREDATE" : "12/09/1982",
+        "SAL" : 3999,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b96"),
+        "EMPNO" : 7876,
+        "ENAME" : "ADAMS",
+        "JOB" : "CLERK",
+        "MGR" : 7788,
+        "HIREDATE" : "01/12/2003",
+        "SAL" : 1100,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078029c83c9f5fd268d9b99"),
+        "EMPNO" : 7902,
+        "ENAME" : "FORD",
+        "JOB" : "ANALYST",
+        "MGR" : 7566,
+        "HIREDATE" : "12/03/1981",
+        "SAL" : 3999,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("607802cc83c9f5fd268d9b9d"),
+        "EMPNO" : 7566,
+        "ENAME" : "JONES",
+        "JOB" : "MANAGER",
+        "MGR" : 7839,
+        "HIREDATE" : "04/02/1981",
+        "SAL" : 2975,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("607803ce83c9f5fd268d9b9e"),
+        "EMPNO" : 7369,
+        "ENAME" : "SMITH",
+        "JOB" : "CLERK",
+        "MGR" : 7902,
+        "HIREDATE" : "12/17/1980",
+        "SAL" : 800,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078040883c9f5fd268d9ba2"),
+        "EMPNO" : 7788,
+        "ENAME" : "SCOTT",
+        "JOB" : "ANALYST",
+        "MGR" : 7566,
+        "HIREDATE" : "12/09/1982",
+        "SAL" : 3999,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078040983c9f5fd268d9ba5"),
+        "EMPNO" : 7876,
+        "ENAME" : "ADAMS",
+        "JOB" : "CLERK",
+        "MGR" : 7788,
+        "HIREDATE" : "01/12/2003",
+        "SAL" : 1100,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078042d83c9f5fd268d9ba8"),
+        "EMPNO" : 7902,
+        "ENAME" : "FORD",
+        "JOB" : "ANALYST",
+        "MGR" : 7566,
+        "HIREDATE" : "12/03/1981",
+        "SAL" : 3999,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+Type "it" for more
+> db.emp.createIndex({EMPNO:1,DEPTNO:-1})
+{
+        "createdCollectionAutomatically" : false,
+        "numIndexesBefore" : 1,
+        "numIndexesAfter" : 2,
+        "ok" : 1
+}
+> db.emp.getindexes()
+uncaught exception: TypeError: db.emp.getindexes is not a function :
+@(shell):1:1
+> db.emp.getIndexes()
+[
+        {
+                "v" : 2,
+                "key" : {
+                        "_id" : 1
+                },
+                "name" : "_id_"
+        },
+        {
+                "v" : 2,
+                "key" : {
+                        "EMPNO" : 1,
+                        "DEPTNO" : -1
+                },
+                "name" : "EMPNO_1_DEPTNO_-1"
+        }
+]
+> db.emp.dropIndexes()
+{
+        "nIndexesWas" : 2,
+        "msg" : "non-_id indexes dropped for collection",
+        "ok" : 1
+}
+> db.emp.getIndexes()
+[ { "v" : 2, "key" : { "_id" : 1 }, "name" : "_id_" } ]
+> db.emp.dropIndexes({EMPNO:1,DEPTNO:-1})
+uncaught exception: Error: error dropping indexes : {
+        "ok" : 0,
+        "errmsg" : "can't find index with key: { EMPNO: 1.0, DEPTNO: -1.0 }",
+        "code" : 27,
+        "codeName" : "IndexNotFound"
+} :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+DBCollection.prototype.dropIndexes@src/mongo/shell/collection.js:704:11
+@(shell):1:1
+> db.emp.find().sort(SAL:1).pretty()
+uncaught exception: SyntaxError: missing ) after argument list :
+@(shell):1:22
+> db.emp.find().sort({EMPNO:1}).pretty()
+{
+        "_id" : ObjectId("6078017583c9f5fd268d9b8c"),
+        "EMPNO" : 7369,
+        "ENAME" : "SMITH",
+        "JOB" : "CLERK",
+        "MGR" : 7902,
+        "HIREDATE" : "12/17/1980",
+        "SAL" : 800,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("607803ce83c9f5fd268d9b9e"),
+        "EMPNO" : 7369,
+        "ENAME" : "SMITH",
+        "JOB" : "CLERK",
+        "MGR" : 7902,
+        "HIREDATE" : "12/17/1980",
+        "SAL" : 800,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078017583c9f5fd268d9b8d"),
+        "EMPNO" : 7499,
+        "ENAME" : "ALLEN",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "02/20/1981",
+        "SAL" : 1600,
+        "COMM" : 300,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078029c83c9f5fd268d9b9b"),
+        "EMPNO" : 7499,
+        "ENAME" : "ALLEN",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "02/20/1981",
+        "SAL" : 1600,
+        "COMM" : 300,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078017583c9f5fd268d9b8e"),
+        "EMPNO" : 7521,
+        "ENAME" : "WARD",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "02/22/1981",
+        "SAL" : 1250,
+        "COMM" : 500,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078029c83c9f5fd268d9b9c"),
+        "EMPNO" : 7521,
+        "ENAME" : "WARD",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "02/22/1981",
+        "SAL" : 1250,
+        "COMM" : 500,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078018183c9f5fd268d9b8f"),
+        "EMPNO" : 7566,
+        "ENAME" : "JONES",
+        "JOB" : "MANAGER",
+        "MGR" : 7839,
+        "HIREDATE" : "04/02/1981",
+        "SAL" : 2975,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("607802cc83c9f5fd268d9b9d"),
+        "EMPNO" : 7566,
+        "ENAME" : "JONES",
+        "JOB" : "MANAGER",
+        "MGR" : 7839,
+        "HIREDATE" : "04/02/1981",
+        "SAL" : 2975,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b90"),
+        "EMPNO" : 7654,
+        "ENAME" : "MARTIN",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "09/28/1981",
+        "NO" : 30
+}
+{
+        "_id" : ObjectId("6078040883c9f5fd268d9b9f"),
+        "EMPNO" : 7654,
+        "ENAME" : "MARTIN",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "09/28/1981",
+        "NO" : 30
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b91"),
+        "EMPNO" : 7698,
+        "ENAME" : "BLAKE",
+        "JOB" : "MANAGER",
+        "MGR" : 7839,
+        "HIREDATE" : "05/01/1981",
+        "SAL" : 2850,
+        "COMM" : null,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078040883c9f5fd268d9ba0"),
+        "EMPNO" : 7698,
+        "ENAME" : "BLAKE",
+        "JOB" : "MANAGER",
+        "MGR" : 7839,
+        "HIREDATE" : "05/01/1981",
+        "SAL" : 2850,
+        "COMM" : null,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b92"),
+        "EMPNO" : 7782,
+        "ENAME" : "CLARK",
+        "JOB" : "MANAGER",
+        "MGR" : 7839,
+        "HIREDATE" : "06/09/1981",
+        "SAL" : 2450,
+        "COMM" : null,
+        "DEPTNO" : 10
+}
+{
+        "_id" : ObjectId("6078040883c9f5fd268d9ba1"),
+        "EMPNO" : 7782,
+        "ENAME" : "CLARK",
+        "JOB" : "MANAGER",
+        "MGR" : 7839,
+        "HIREDATE" : "06/09/1981",
+        "SAL" : 2450,
+        "COMM" : null,
+        "DEPTNO" : 10
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b93"),
+        "EMPNO" : 7788,
+        "ENAME" : "SCOTT",
+        "JOB" : "ANALYST",
+        "MGR" : 7566,
+        "HIREDATE" : "12/09/1982",
+        "SAL" : 3999,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078040883c9f5fd268d9ba2"),
+        "EMPNO" : 7788,
+        "ENAME" : "SCOTT",
+        "JOB" : "ANALYST",
+        "MGR" : 7566,
+        "HIREDATE" : "12/09/1982",
+        "SAL" : 3999,
+        "COMM" : null,
+        "DEPTNO" : 20
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b94"),
+        "EMPNO" : 7839,
+        "ENAME" : "KING",
+        "JOB" : "PRESIDENT",
+        "MGR" : null,
+        "HIREDATE" : "11/17/1981",
+        "SAL" : 5000,
+        "COMM" : null,
+        "DEPTNO" : null
+}
+{
+        "_id" : ObjectId("6078040883c9f5fd268d9ba3"),
+        "EMPNO" : 7839,
+        "ENAME" : "KING",
+        "JOB" : "PRESIDENT",
+        "MGR" : null,
+        "HIREDATE" : "11/17/1981",
+        "SAL" : 5000,
+        "COMM" : null,
+        "DEPTNO" : null
+}
+{
+        "_id" : ObjectId("6078029b83c9f5fd268d9b95"),
+        "EMPNO" : 7844,
+        "ENAME" : "TURNER",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "09/08/1981",
+        "SAL" : 1500,
+        "COMM" : 0,
+        "DEPTNO" : 30
+}
+{
+        "_id" : ObjectId("6078040983c9f5fd268d9ba4"),
+        "EMPNO" : 7844,
+        "ENAME" : "TURNER",
+        "JOB" : "SALESMAN",
+        "MGR" : 7698,
+        "HIREDATE" : "09/08/1981",
+        "SAL" : 1500,
+        "COMM" : 0,
+        "DEPTNO" : 30
+}
+Type "it" for more
+> db.emp.aggregate([{$group:{$sum:"$SAL"}}])
+uncaught exception: Error: command failed: {
+        "ok" : 0,
+        "errmsg" : "The field '$sum' must be an accumulator object",
+        "code" : 40234,
+        "codeName" : "Location40234"
+} : aggregate failed :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:18:14
+_assertCommandWorked@src/mongo/shell/assert.js:639:17
+assert.commandWorked@src/mongo/shell/assert.js:729:16
+DB.prototype._runAggregate@src/mongo/shell/db.js:266:5
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1058:12
+@(shell):1:1
+> db.emp.aggregate([{$group:{_id:EMPNO,"total_sal":{$sum:$SAL}}}])
+uncaught exception: ReferenceError: EMPNO is not defined :
+@(shell):1:28
+> db.emp.aggregate([{$group:{DEPTNO=10,"total_sal":{$sum:$SAL}}}])
+uncaught exception: SyntaxError: missing : after property id :
+@(shell):1:33
+> db.emp.aggregate([{$group:{_id:DEPTNO,"total_sal":{$sum:"$SAL"}}}])
+uncaught exception: ReferenceError: DEPTNO is not defined :
+@(shell):1:28
+> db.emp.aggregate([{$group:{_id:"DEPTNO","total_sal":{$sum:"$SAL"}}}])
+{ "_id" : "DEPTNO", "total_sal" : 71544 }
+> db.emp.aggregate([{$group:{_id:"DEPTNO","total_sal":{$sum:"$SAL"}}}]).pretty()
+{ "_id" : "DEPTNO", "total_sal" : 71544 }
+>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
